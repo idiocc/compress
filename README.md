@@ -94,8 +94,25 @@ GNU Affero General Public License v3.0
 
 <table>
   <tr>
-    <td><img src="https://avatars3.githubusercontent.com/u/40834161?v=4&amp;s=100" alt="idiocc"></td>
-    <td>© <a href="https://www.idio.cc">Idio</a> 2019</td>
+    <th>
+      <a href="https://artd.eco">
+        <img width="100" src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png"
+          alt="Art Deco">
+      </a>
+    </th>
+    <th>© <a href="https://artd.eco">Art Deco</a> for <a href="https://idio.cc">Idio</a> 2019</th>
+    <th>
+      <a href="https://idio.cc">
+        <img src="https://avatars3.githubusercontent.com/u/40834161?s=100" width="100" alt="Idio">
+      </a>
+    </th>
+    <th>
+      <a href="https://www.technation.sucks" title="Tech Nation Visa">
+        <img width="100" src="https://raw.githubusercontent.com/idiocc/cookies/master/wiki/arch4.jpg"
+          alt="Tech Nation Visa">
+      </a>
+    </th>
+    <th><a href="https://www.technation.sucks">Tech Nation Visa Sucks</a></th>
   </tr>
 </table>
 

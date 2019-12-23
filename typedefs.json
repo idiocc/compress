@@ -1,6 +1,6 @@
 {
   "_goa.compress": {
-    "link": "https://github.com/idiocc/compress#compressconfig-_goacompressconfig-_goamiddleware",
+    "link": "https://github.com/idiocc/compress#compressconfig-compressconfig-middleware",
     "description": "Compression Middleware For Goa Apps."
   },
   "_goa.CompressConfig": {
