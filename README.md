@@ -13,8 +13,8 @@ npm install @goa/compress
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-- [`compress(config): !_goa.Middleware`](#compressconfig-_goacompressconfig-_goamiddleware)
-  * [`_goa.CompressConfig`](#type-_goacompressconfig)
+- [`compress(config): !Middleware`](#compressconfig-compressconfig-middleware)
+  * [`CompressConfig`](#type-compressconfig)
 - [Copyright & License](#copyright--license)
 
 <p align="center"><a href="#table-of-contents">
@@ -33,12 +33,12 @@ import compress from '@goa/compress'
   <img src="/.documentary/section-breaks/1.svg?sanitize=true">
 </a></p>
 
-## <code><ins>compress</ins>(</code><sub><br/>&nbsp;&nbsp;`config: !_goa.CompressConfig,`<br/></sub><code>): <i>!_goa.Middleware</i></code>
+## <code><ins>compress</ins>(</code><sub><br/>&nbsp;&nbsp;`config: !CompressConfig,`<br/></sub><code>): <i>!Middleware</i></code>
 Compression Middleware For Goa Apps.
 
- - <kbd><strong>config*</strong></kbd> <em><code>[!_goa.CompressConfig](#type-_goacompressconfig)</code></em>: The config.
+ - <kbd><strong>config*</strong></kbd> <em><code>[!CompressConfig](#type-compressconfig)</code></em>: The config.
 
-<strong><a name="type-_goacompressconfig">`_goa.CompressConfig`</a></strong>
+__<a name="type-compressconfig">`CompressConfig`</a>__
 
 
 |    Name     |                Type                 |                                                          Description                                                          | Default |
@@ -55,17 +55,31 @@ Compression Middleware For Goa Apps.
 | filter      | <em>(type?: string) => boolean</em> | An optional function that checks the response content type to decide whether to compress. By default, it uses `compressible`. | -       |
 
 ```js
-import compress from '@goa/compress'
+import { aqt } from 'rqt'
+import Goa from '@goa/koa'
+import compress from '../compile'
+import packageJson from '../package'
 
-(async () => {
-  const res = await compress({
-    text: 'example',
-  })
-  console.log(res)
-})()
-```
-```
+const goa = new Goa()
+goa.use(compress())
+goa.use(ctx => {
+  ctx.body = packageJson
+})
 
+goa.listen(async function() {
+  const url = 'http://localhost:' + this.address().port
+  const { headers } = await aqt(url)
+  console.log(headers)
+  this.close()
+})
+```
+```js
+{ vary: 'Accept-Encoding',
+  'content-type': 'application/json; charset=utf-8',
+  'content-encoding': 'gzip',
+  date: 'Mon, 23 Dec 2019 05:51:02 GMT',
+  connection: 'close',
+  'transfer-encoding': 'chunked' }
 ```
 
 <p align="center"><a href="#table-of-contents">
@@ -80,8 +94,8 @@ GNU Affero General Public License v3.0
 
 <table>
   <tr>
-    <td><img src="https://avatars3.githubusercontent.com/u/38815725?v=4&amp;s=100" alt="idiocc"></td>
-    <td>© <a href="https://www.idio.cc">Idio™</a> 2019</td>
+    <td><img src="https://avatars3.githubusercontent.com/u/40834161?v=4&amp;s=100" alt="idiocc"></td>
+    <td>© <a href="https://www.idio.cc">Idio</a> 2019</td>
   </tr>
 </table>
 

@@ -13,6 +13,6 @@ import compress from '@goa/compress'
 <typedef>types/index.xml</typedef>
 
 %EXAMPLE: example, ../src => @goa/compress%
-%FORK example%
+%FORK-js example%
 
 %~%
