@@ -1,6 +1,6 @@
 {
   "name": "@goa/compress",
-  "version": "0.0.0-pre",
+  "version": "1.0.0",
   "description": "Compression Middleware For Goa Apps.",
   "main": "compile/index.js",
   "module": "src/index.js",
