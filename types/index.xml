@@ -1,10 +1,37 @@
-<types namespace="_compress">
-  <type record name="Config" desc="Options for the program.">
-    <prop boolean name="shouldRun" default="true">
-      A boolean option.
+<types namespace="_goa">
+  <record name="CompressConfig">
+    <fn opt return="boolean" name="filter">
+      <arg string name="type" opt>
+        The content type of the response.
+      </arg>
+      An optional function that checks the response content type to decide whether to compress. By default, it uses `compressible`.
+    </fn>
+    <prop number name="threshold" default="1024">
+      Minimum response size in bytes to compress.
     </prop>
-    <prop string name="text" opt>
-      A text to return.
+    <prop opt number name="flush">
+      Default: `zlib.constants.Z_NO_FLUSH`.
     </prop>
-  </type>
+    <prop opt number name="finishFlush">
+      Default: `zlib.constants.Z_FINISH`.
+    </prop>
+    <prop opt number name="chunkSize">
+      Default: `16*1024`.
+    </prop>
+    <prop opt number name="windowBits">
+      Support extend types.
+    </prop>
+    <prop opt number name="level">
+      Compression only.
+    </prop>
+    <prop opt number name="memLevel">
+      Compression only.
+    </prop>
+    <prop opt number name="strategy">
+      Compression only.
+    </prop>
+    <prop opt name="dictionary">
+      Deflate/inflate only, empty dictionary by default.
+    </prop>
+  </record>
 </types>

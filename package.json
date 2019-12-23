@@ -9,7 +9,7 @@
     "test": "yarn t test/spec test/mask",
     "spec": "yarn t test/spec",
     "mask": "yarn t test/mask",
-    "lib": "depack src/depack.js -o compile/compress.js -a -c --source_map_include_content",
+    "lib": "depack src/depack.js -o compile/compress.js -a -c --source_map_include_content --externs http",
     "test-compile": "ALAMODE_ENV=test-compile yarn test",
     "lint": "eslint .",
     "doc": "doc -o README.md -n _compress -a -d",
@@ -30,6 +30,7 @@
     "type": "git",
     "url": "git://github.com/idiocc/compress.git"
   },
+  "typedefs": "typedefs.json",
   "keywords": [
     "idio",
     "compress",
@@ -44,12 +45,23 @@
   },
   "homepage": "https://www.idio.cc",
   "devDependencies": {
+    "@externs/goa": "^1.0.1",
+    "@externs/idio": "^0.0.3",
+    "@goa/goa": "^1.6.1",
+    "@goa/koa": "^2.1.0",
+    "@goa/statuses": "^1.0.1",
+    "@typedefs/goa": "^0.1.5",
+    "@typedefs/idio": "^0.0.3",
     "alamode": "^3.2.0",
     "depack": "^1.0.1",
     "documentary": "^1.34.1",
     "erte": "^1.2.0",
     "eslint-config-artdeco": "1.0.1",
+    "rqt": "^4.0.0",
     "yarn-s": "1.2.1",
     "zoroaster": "^4.1.2"
+  },
+  "dependencies": {
+    "mime-db": "^1.42.0"
   }
 }

@@ -6,7 +6,7 @@
 
 GNU Affero General Public License v3.0
 
-[Original work](https://github.com/koajs/compress) by __ under MIT license found in [COPYING](COPYING).
+[Original work](https://github.com/koajs/compress) by _Jonathan Ong_ under MIT license found in [COPYING](COPYING).
 
 <footer />
 

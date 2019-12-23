@@ -3,9 +3,9 @@
  */
 export const footer = () => {
   const alt = 'idiocc'
-  const src = 'https://avatars3.githubusercontent.com/u/38815725?v=4&s=100'
+  const src = 'https://avatars3.githubusercontent.com/u/40834161?v=4&s=100'
   const href = 'https://www.idio.cc'
-  const org = 'Idio™'
+  const org = 'Idio'
   const year = new Date().getFullYear()
   return [
     (<table>

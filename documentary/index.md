@@ -6,6 +6,7 @@
 
 ```sh
 yarn add @goa/compress
+npm install @goa/compress
 ```
 
 ## Table Of Contents

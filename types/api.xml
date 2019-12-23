@@ -1,6 +1,8 @@
-<types namespace="_compress">
-  <method name="compress" async return="string">
-    <arg type="!_compress.Config" name="config">The config.</arg>
+<types namespace="_goa">
+  <import name="Middleware" from="@typedefs/goa" ns="_goa" />
+
+  <method name="compress" return="!_goa.Middleware">
+    <arg type="!_goa.CompressConfig" name="config">The config.</arg>
     Compression Middleware For Goa Apps.
   </method>
 </types>

@@ -8,7 +8,7 @@ import compress from '@goa/compress'
 
 %~%
 
-<typedef method="compress">types/api.xml</typedef>
+<typedef noArgTypesInToc method="compress">types/api.xml</typedef>
 
 <typedef>types/index.xml</typedef>
 
