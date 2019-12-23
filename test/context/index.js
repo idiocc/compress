@@ -1,7 +1,7 @@
 import { join } from 'path'
 import { debuglog } from 'util'
 
-const LOG = debuglog('my-new-package')
+const LOG = debuglog('@goa/compress')
 
 /**
  * A testing context for the package.
@@ -29,9 +29,6 @@ export default class Context {
   async _destroy() {
     LOG('destroy context')
   }
-  static get BIN() {
-    return BIN
-  }
 }
 
 /** @typedef {Object<string, Test & TestSuite4>} TestSuite */
@@ -41,12 +38,3 @@ export default class Context {
 /** @typedef {Object<string, Test & TestSuite0>} TestSuite1 */
 /** @typedef {Object<string, Test>} TestSuite0 */
 /** @typedef {(c: Context)} Test */
-
-let BIN = 'src/BIN'
-if (process.env.ALAMODE_ENV == 'test-build') {
-  console.log('Testing build bin...')
-  BIN = 'build/bin/mnp'
-} else if (process.env.ALAMODE_ENV == 'test-compile') {
-  console.log('Testing compile bin...')
-  BIN = 'compile/bin/mnp'
-}

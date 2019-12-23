@@ -1,1 +1,1 @@
-{{ description }}
+Compression Middleware For Goa Apps.

@@ -5,19 +5,19 @@
 
 /* typal types/index.xml externs */
 /** @const */
-var _myNewPackage = {}
+var _compress = {}
 /**
  * Options for the program.
  * @record
  */
-_myNewPackage.Config
+_compress.Config
 /**
  * A boolean option. Default `true`.
  * @type {boolean|undefined}
  */
-_myNewPackage.Config.prototype.shouldRun
+_compress.Config.prototype.shouldRun
 /**
  * A text to return.
  * @type {string|undefined}
  */
-_myNewPackage.Config.prototype.text
+_compress.Config.prototype.text

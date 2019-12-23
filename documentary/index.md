@@ -1,11 +1,11 @@
-# my-new-package
+# @goa/compress
 
-%NPM: my-new-package%
+%NPM: @goa/compress%
 
-`my-new-package` is {{ description }}
+`@goa/compress` is Compression Middleware For Goa Apps.
 
 ```sh
-yarn add my-new-package
+yarn add @goa/compress
 ```
 
 ## Table Of Contents

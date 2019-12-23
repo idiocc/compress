@@ -1,12 +1,12 @@
-const { _myNewPackage } = require('./mnp')
+const { _compress } = require('./compress')
 
 /**
- * @methodType {_myNewPackage.myNewPackage}
+ * @methodType {_compress.compress}
  */
-function myNewPackage(config) {
-  return _myNewPackage(config)
+function compress(config) {
+  return _compress(config)
 }
 
-module.exports = myNewPackage
+module.exports = compress
 
 /* typal types/index.xml namespace */

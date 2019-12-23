@@ -1,6 +1,6 @@
 import '../types/externs'
-import myNewPackage from './'
+import compress from './'
 
 module.exports = {
-  '_myNewPackage': myNewPackage,
+  '_compress': compress,
 }

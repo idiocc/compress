@@ -3,16 +3,16 @@
 The package is available by importing its default function:
 
 ```js
-import myNewPackage from 'my-new-package'
+import compress from '@goa/compress'
 ```
 
 %~%
 
-<typedef method="myNewPackage">types/api.xml</typedef>
+<typedef method="compress">types/api.xml</typedef>
 
 <typedef>types/index.xml</typedef>
 
-%EXAMPLE: example, ../src => my-new-package%
+%EXAMPLE: example, ../src => @goa/compress%
 %FORK example%
 
 %~%
