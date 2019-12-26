@@ -38,21 +38,13 @@ Compression Middleware For Goa Apps.
 
  - <kbd><strong>config*</strong></kbd> <em><code>[!CompressConfig](#type-compressconfig)</code></em>: The config.
 
-__<a name="type-compressconfig">`CompressConfig`</a>__
+<strong><a name="type-compressconfig">`CompressConfig`</a> extends <a href="https://nodejs.org/api/zlib.html#zlib_class_options" title="Each zlib-based class takes an options object. All options are optional.">`zlib.ZlibOptions`</a></strong>
 
 
-|    Name     |                Type                 |                                                          Description                                                          | Default |
-| ----------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------- |
-| threshold   | <em>number</em>                     | Minimum response size in bytes to compress.                                                                                   | `1024`  |
-| flush       | <em>number</em>                     | Default: `zlib.constants.Z_NO_FLUSH`.                                                                                         | -       |
-| finishFlush | <em>number</em>                     | Default: `zlib.constants.Z_FINISH`.                                                                                           | -       |
-| chunkSize   | <em>number</em>                     | Default: `16*1024`.                                                                                                           | -       |
-| windowBits  | <em>number</em>                     | Support extend types.                                                                                                         | -       |
-| level       | <em>number</em>                     | Compression only.                                                                                                             | -       |
-| memLevel    | <em>number</em>                     | Compression only.                                                                                                             | -       |
-| strategy    | <em>number</em>                     | Compression only.                                                                                                             | -       |
-| dictionary  | <em>*</em>                          | Deflate/inflate only, empty dictionary by default.                                                                            | -       |
-| filter      | <em>(type?: string) => boolean</em> | An optional function that checks the response content type to decide whether to compress. By default, it uses `compressible`. | -       |
+|   Name    |                Type                 |                                                          Description                                                          | Default |
+| --------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------- |
+| threshold | <em>number</em>                     | Minimum response size in bytes to compress.                                                                                   | `1024`  |
+| filter    | <em>(type?: string) => boolean</em> | An optional function that checks the response content type to decide whether to compress. By default, it uses `compressible`. | -       |
 
 ```js
 import { aqt } from 'rqt'
@@ -77,7 +69,7 @@ goa.listen(async function() {
 { vary: 'Accept-Encoding',
   'content-type': 'application/json; charset=utf-8',
   'content-encoding': 'gzip',
-  date: 'Mon, 23 Dec 2019 05:51:02 GMT',
+  date: 'Thu, 26 Dec 2019 09:22:45 GMT',
   connection: 'close',
   'transfer-encoding': 'chunked' }
 ```
