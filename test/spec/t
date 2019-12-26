@@ -1,0 +1,85 @@
+// if (threshold) {
+//     if (ctx.body instanceof Readable) {
+//       const stream = /** @type {stream.Readable} */ (ctx.body)
+//       let totalLength = 0
+//       let totalData = []
+//       let resolved = false
+//       let hasError = false
+//       const newBody = await new Promise((re, j) => {
+//         const r = new Transform({
+//           transform(data, enc, cb) {
+//             if (resolved) {
+//               this.push(data)
+//               return cb()
+//             }
+//             totalLength += data.length
+//             totalData.push(data)
+//             if (totalLength > threshold) {
+//               const nb = new PassThrough()
+//               r.on('error', e => {
+//                 if (body === nb)
+//                   nb.emit('error', e)
+//               })
+//               totalData.forEach(b => nb.push(b))
+//               this.pipe(nb)
+//               resolved = true
+//               re({ nb, cb })
+//             }
+//             if (!resolved) cb()
+//           },
+//         })
+//         r.once('finish', re)
+//         stream.once('error', (e) => {
+//           hasError = true
+//           r.emit('error', e)
+//         })
+//         r.once('error', j)
+//         stream.pipe(r)
+//       })
+
+//       if (hasError) return
+//       if (newBody) {
+//         body = newBody.nb
+//         newBody.cb()
+//       } else {
+//         ctx.body = new Readable({
+//           read() {
+//             totalData.forEach((d) => {
+//               this.push(d)
+//             })
+//             this.push(null)
+//           },
+//         })
+//         return
+//       }
+//     } else if (ctx.response.length < threshold) return
+//   }
+//   // test
+
+//   async '!throws an error during reading after threshold 3'({ startPlain, app }) {
+//   app.use(compress())
+//   app.use((ctx) => {
+//     ctx.type = 'application/json'
+//     const data = Buffer.from(JSON.stringify(pckg))
+//     let read = 0
+//     let destroying = false
+//     const r = new Readable({
+//       async read() {
+//         await new Promise(re => setTimeout(re, 1))
+//         if (destroying) return
+//         const after = read + 50
+//         const d = data.slice(read, after)
+//         this.push(d)
+//         read = after
+//         if (after > 1200) {
+//           destroying = true
+//           this.destroy(new Error('stream error'))
+//         }
+//       },
+//     })
+//     ctx.body = r
+//   })
+//   await startPlain(app.callback())
+//     .get('/')
+//     .assert(500)
+// },

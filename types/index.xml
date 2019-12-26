@@ -1,5 +1,6 @@
 <types namespace="_goa">
-  <record name="CompressConfig">
+  <import from="zlib" name="ZlibOptions" link="https://nodejs.org/api/zlib.html#zlib_class_options" desc="Each zlib-based class takes an options object. All options are optional."/>
+  <record name="CompressConfig" extends="zlib.ZlibOptions">
     <fn opt return="boolean" name="filter">
       <arg string name="type" opt>
         The content type of the response.
@@ -8,30 +9,6 @@
     </fn>
     <prop number name="threshold" default="1024">
       Minimum response size in bytes to compress.
-    </prop>
-    <prop opt number name="flush">
-      Default: `zlib.constants.Z_NO_FLUSH`.
-    </prop>
-    <prop opt number name="finishFlush">
-      Default: `zlib.constants.Z_FINISH`.
-    </prop>
-    <prop opt number name="chunkSize">
-      Default: `16*1024`.
-    </prop>
-    <prop opt number name="windowBits">
-      Support extend types.
-    </prop>
-    <prop opt number name="level">
-      Compression only.
-    </prop>
-    <prop opt number name="memLevel">
-      Compression only.
-    </prop>
-    <prop opt number name="strategy">
-      Compression only.
-    </prop>
-    <prop opt name="dictionary">
-      Deflate/inflate only, empty dictionary by default.
     </prop>
   </record>
 </types>

@@ -1,7 +1,7 @@
 import compressible from './compressible'
 import isJSON from '@goa/goa/modules/koa-is-json'
 import { empty } from '@goa/statuses'
-import Stream from 'stream'
+import Stream, { Readable, Transform } from 'stream'
 import { createGzip, createDeflate } from 'zlib'
 import bytes from './bytes'
 
@@ -48,17 +48,57 @@ function Compress(options = {}) {
     if (isJSON(body)) body = ctx.body = JSON.stringify(body)
 
     // threshold
-    if (threshold && ctx.response.length < threshold) return
+    if (threshold) {
+      if (ctx.body instanceof Readable) {
+        const st = /** @type {!stream.Readable} */ (ctx.body)
+        let totalLength = 0
+        let resolved = false
+        let error
+        const { newStream, callback } = await new Promise((re, j) => {
+          const r = new Transform(/** @type {!stream.TransformOptions} */({
+            transform(data, enc, cb) {
+              this.push(data)
+              if (resolved) {
+                cb()
+                return
+              }
+              totalLength += data.length
+              if (totalLength > threshold) {
+                resolved = true
+                re({ newStream: this, callback: cb })
+              } else cb()
+            },
+          }))
+          r.once('finish', () => re({ newStream: r }))
+          st.once('error', (err) => {
+            error = err
+            re({})
+          })
+          r.once('error', j)
+          st.pipe(r)
+          r.pause()
+        })
+
+        if (error) return // handled by Koa
+        body = newStream
+        body.resume()
+        if (!callback) {
+          ctx.body = body
+          return
+        }
+        callback()
+      } else if (ctx.response.length < threshold) return
+    }
 
     ctx.set('Content-Encoding', encoding)
     ctx.res.removeHeader('Content-Length')
 
-    const stream = ctx.body = encodingMethods[encoding](options)
+    const compression = ctx.body = encodingMethods[encoding](options)
 
     if (body instanceof Stream) {
-      body.pipe(stream)
+      body.pipe(compression)
     } else {
-      stream.end(body)
+      compression.end(body)
     }
   }
   return /** @type {!_goa.Middleware} */ (middleware)
@@ -77,4 +117,12 @@ export default Compress
 /**
  * @suppress {nonStandardJsDocs}
  * @typedef {import('..').compress} _goa.compress
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('stream').Readable} stream.Readable
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('stream').TransformOptions} stream.TransformOptions
  */

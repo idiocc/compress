@@ -5,7 +5,7 @@
   "main": "compile/index.js",
   "module": "src/index.js",
   "scripts": {
-    "t": "zoroaster -a",
+    "t": "zoroaster -a test/index.js",
     "test": "yarn t test/spec test/mask",
     "spec": "yarn t test/spec",
     "mask": "yarn t test/mask",
@@ -45,6 +45,7 @@
   },
   "homepage": "https://www.idio.cc",
   "devDependencies": {
+    "@contexts/http": "^1.6.2",
     "@externs/goa": "^1.0.1",
     "@externs/idio": "^0.0.3",
     "@goa/goa": "^1.6.1",
@@ -52,9 +53,9 @@
     "@goa/statuses": "^1.0.1",
     "@typedefs/goa": "^0.1.5",
     "@typedefs/idio": "^0.0.3",
-    "alamode": "^3.2.0",
+    "alamode": "^3.3.0",
     "depack": "^1.0.1",
-    "documentary": "^1.34.1",
+    "documentary": "^1.35.8",
     "erte": "^1.2.0",
     "eslint-config-artdeco": "1.0.1",
     "rqt": "^4.0.0",
