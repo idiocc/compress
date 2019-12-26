@@ -1,3 +1,10 @@
+## 26 December 2019
+
+### [1.1.0](https://github.com/idiocc/compress/compare/v1.0.0...v1.1.0)
+
+- [doc] Extend `zlib.ZlibOptions` instead of copying properties.
+- [feature] Compress streams with threshold as well.
+
 ## 23 December 2019
 
 ### [1.0.0](https://github.com/idiocc/compress/compare/v0.0.0-pre...v1.0.0)
