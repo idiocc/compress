@@ -251,12 +251,14 @@ export const stream = {
 }
 
 /** @type {TestSuite} */
-export const events = {
-  async 'emits use event on streams'({ startPlain, app }) {
-    const p = new Promise((r) => {
-      app.on('use', (pck, item) => {
-        r({ package: pck, item })
-      })
+export const neoluddite = {
+  async 'records use on streams'({ startPlain, app }) {
+    let usage = []
+    app.use(async (ctx, next) => {
+      ctx.neoluddite = (p, item) => {
+        usage.push({ package: p, item })
+      }
+      await next()
     })
     app.use(compress())
     app.use((ctx) => {
@@ -280,13 +282,15 @@ export const events = {
       .get('/')
       .assert(200, { ...pckg })
       .assert('content-encoding', 'gzip')
-    return await p
+    return usage
   },
-  async 'emits use event on buffer'({ startPlain, app }) {
-    const p = new Promise((r) => {
-      app.on('use', (pck, item) => {
-        r({ package: pck, item })
-      })
+  async 'records use on buffer'({ startPlain, app }) {
+    let usage = []
+    app.use(async (ctx, next) => {
+      ctx.neoluddite = (p, item) => {
+        usage.push({ package: p, item })
+      }
+      await next()
     })
     app.use(compress())
     app.use((ctx) => {
@@ -297,7 +301,7 @@ export const events = {
       .get('/')
       .assert(200, pckg)
       .assert('content-encoding', 'gzip')
-    return await p
+    return usage
   },
 }
 

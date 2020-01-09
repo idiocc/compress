@@ -96,10 +96,10 @@ function Compress(options = {}) {
     const compression = ctx.body = encodingMethods[encoding](options)
 
     if (body instanceof Stream) {
-      ctx.app.emit('use', '@goa/compress', 'stream')
+      if (ctx['neoluddite']) ctx['neoluddite']('@goa/compress', 'stream')
       body.pipe(compression)
     } else {
-      ctx.app.emit('use', '@goa/compress', 'data')
+      if (ctx['neoluddite']) ctx['neoluddite']('@goa/compress', 'data')
       compression.end(body)
     }
   }
