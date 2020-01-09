@@ -27,7 +27,7 @@ const EXTRACT_TYPE_REGEXP = /^\s*([^;\s]*)(?:;|\s|$)/
  * @param {string} type
  * @return {?boolean} compressible
  */
-export default function compressible (type) {
+export default function compressible(type) {
   if (!type || typeof type != 'string') {
     return false
   }
@@ -38,7 +38,7 @@ export default function compressible (type) {
   const data = db[mime]
 
   // return database information
-  if (data && data['compressible'] !== undefined) {
+  if (data && 'compressible' in data) {
     return data['compressible']
   }
 

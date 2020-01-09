@@ -96,8 +96,10 @@ function Compress(options = {}) {
     const compression = ctx.body = encodingMethods[encoding](options)
 
     if (body instanceof Stream) {
+      ctx.app.emit('use', '@goa/compress', 'stream')
       body.pipe(compression)
     } else {
+      ctx.app.emit('use', '@goa/compress', 'data')
       compression.end(body)
     }
   }

@@ -55,7 +55,7 @@
     "@typedefs/idio": "^0.0.3",
     "alamode": "^3.3.0",
     "depack": "^1.0.1",
-    "documentary": "^1.35.8",
+    "documentary": "^1.35.9",
     "erte": "^1.2.0",
     "eslint-config-artdeco": "1.0.1",
     "rqt": "^4.0.0",
@@ -63,6 +63,6 @@
     "zoroaster": "^4.1.2"
   },
   "dependencies": {
-    "mime-db": "^1.42.0"
+    "mime-db": "^1.43.0"
   }
 }

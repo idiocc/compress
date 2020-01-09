@@ -250,6 +250,57 @@ export const stream = {
   },
 }
 
+/** @type {TestSuite} */
+export const events = {
+  async 'emits use event on streams'({ startPlain, app }) {
+    const p = new Promise((r) => {
+      app.on('use', (pck, item) => {
+        r({ package: pck, item })
+      })
+    })
+    app.use(compress())
+    app.use((ctx) => {
+      ctx.type = 'application/json'
+      const data = Buffer.from(JSON.stringify(pckg))
+      let read = 0
+      const r = new Readable({
+        async read() {
+          await new Promise(re => setTimeout(re, 1))
+          const after = read + 100
+          const d = data.slice(read, after)
+          this.push(d)
+          read = after
+          if (after > data.length)
+            this.push(null)
+        },
+      })
+      ctx.body = r
+    })
+    await startPlain(app.callback())
+      .get('/')
+      .assert(200, { ...pckg })
+      .assert('content-encoding', 'gzip')
+    return await p
+  },
+  async 'emits use event on buffer'({ startPlain, app }) {
+    const p = new Promise((r) => {
+      app.on('use', (pck, item) => {
+        r({ package: pck, item })
+      })
+    })
+    app.use(compress())
+    app.use((ctx) => {
+      ctx.type = 'application/json'
+      ctx.body = pckg
+    })
+    await startPlain(app.callback())
+      .get('/')
+      .assert(200, pckg)
+      .assert('content-encoding', 'gzip')
+    return await p
+  },
+}
+
 /**
  * @typedef {import('../context').TestSuite} TestSuite
  */

@@ -190,10 +190,10 @@ differently@^1.0.0:
   dependencies:
     erte "^1.2.0"
 
-documentary@^1.35.8:
-  version "1.35.8"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.35.8.tgz#17e86eeecdca6daa0c8058484e6ced78ce5e3199"
-  integrity sha512-/V3Qs4oru12RFl0zif4TPmTcJ0whCnaWZxOsblpkzyFx7wZkWK9QTMGMz1C2Qv2aYVswMjV2BKQuE5UBHAsa6Q==
+documentary@^1.35.9:
+  version "1.35.9"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.35.9.tgz#f0003b04c4a54325198e1189f81ba88aad87e21a"
+  integrity sha512-NnZvzx+429RfwgehvpSNvTXFEOR3bnrPW09TZpPxwa2QnPOdRybxoKDrluP6QoGDQslOKXrWkzSXO/lesqPsWw==
   dependencies:
     alamode "^3.3.0"
     preact "8.5.3"
@@ -220,6 +220,11 @@ mime-db@^1.40.0, mime-db@^1.42.0:
   version "1.42.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.42.0.tgz#3e252907b4c7adb906597b4b65636272cf9e7bac"
   integrity sha512-UbfJCR4UAVRNgMpfImz05smAXK7+c+ZntjaA26ANtkXLlOe947Aag5zdIcKQULAiF9Cq4WxBi9jUs5zkA84bYQ==
+
+mime-db@^1.43.0:
+  version "1.43.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.43.0.tgz#0a12e0502650e473d735535050e7c8f4eb4fae58"
+  integrity sha512-+5dsGEEovYbT8UY9yD7eE4XTc4UwJ1jBYlgaQQF38ENsKR3wj/8q8RFZrF9WIZpB2V1ArTVFUva8sAul1NzRzQ==
 
 mismatch@^1.2.0:
   version "1.2.0"
