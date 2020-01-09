@@ -70,7 +70,7 @@ goa.listen(async function() {
 { vary: 'Accept-Encoding',
   'content-type': 'application/json; charset=utf-8',
   'content-encoding': 'gzip',
-  date: 'Thu, 09 Jan 2020 01:32:43 GMT',
+  date: 'Thu, 09 Jan 2020 14:35:12 GMT',
   connection: 'close',
   'transfer-encoding': 'chunked' }
 ```
@@ -81,12 +81,12 @@ goa.listen(async function() {
 
 ## Usage Events
 
-This middleware integrates with Idio that collects middleware usage statistics to reward package maintainers. It will emit certain events to bill its usage:
+This middleware integrates with [_Idio_](https://github.com/idiocc/idio) that collects middleware usage statistics to reward package maintainers. It will emit certain events to bill its usage:
 
 1. `stream`: When the compression is applied to stream.
 1. `data`: When non-stream body is compressed.
 
-In future, more fine-grained usage events might appear.
+The usage is recorded via the `ctx.neoluddite` context property set by a server such as _Idio_. In future, more fine-grained usage events might appear.
 
 <p align="center"><a href="#table-of-contents">
   <img src="/.documentary/section-breaks/3.svg?sanitize=true">
