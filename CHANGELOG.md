@@ -1,3 +1,9 @@
+## 9 January 2020
+
+### [1.2.0](https://github.com/idiocc/compress/compare/v1.1.0...v1.2.0)
+
+- [license] Usage events.
+
 ## 26 December 2019
 
 ### [1.1.0](https://github.com/idiocc/compress/compare/v1.0.0...v1.1.0)
